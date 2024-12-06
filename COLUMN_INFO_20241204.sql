@@ -829,5 +829,3 @@ INSERT INTO COLUMN_INFO_20241204 (테이블영문명, 기존컬럼영문명, 표
 INSERT INTO COLUMN_INFO_20241204 (테이블영문명, 기존컬럼영문명, 표준용어컬럼영문명, 기존컬럼한글명, 표준용어컬럼한글명) VALUES ('cms_chapter_sch', 'is_del', 'DEL_YN', '삭제여부(N,Y)', '삭제여부');
 INSERT INTO COLUMN_INFO_20241204 (테이블영문명, 기존컬럼영문명, 표준용어컬럼영문명, 기존컬럼한글명, 표준용어컬럼한글명) VALUES ('cms_chapter_sch', 'reg_date', 'CRT_DT', '생성일', '생성일시');
 INSERT INTO COLUMN_INFO_20241204 (테이블영문명, 기존컬럼영문명, 표준용어컬럼영문명, 기존컬럼한글명, 표준용어컬럼한글명) VALUES ('cms_chapter_sch', 'upd_date', 'MDFCN_DT', '수정일', '수정일시');
-INSERT INTO COLUMN_INFO_20241204 (테이블영문명, 기존컬럼영문명, 표준용어컬럼영문명, 기존컬럼한글명, 표준용어컬럼한글명) VALUES ('', '', '', '', '');
-INSERT INTO COLUMN_INFO_20241204 (테이블영문명, 기존컬럼영문명, 표준용어컬럼영문명, 기존컬럼한글명, 표준용어컬럼한글명) VALUES ('', '', '', '', '');

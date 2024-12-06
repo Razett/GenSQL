@@ -8,6 +8,17 @@ import java.util.List;
 
 public class CsvToSqlUtil {
 
+    private static CsvToSqlUtil instance;
+
+    private CsvToSqlUtil() {}
+
+    public static CsvToSqlUtil getInstance() {
+        if (instance == null) {
+            instance = new CsvToSqlUtil();
+        }
+        return instance;
+    }
+
     public String readCsvToSql(String filename) throws IOException, CsvException {
         String tableName = filename.substring(0, filename.length() - 4);
 

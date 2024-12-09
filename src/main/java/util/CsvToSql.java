@@ -2,27 +2,23 @@ package util;
 
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
+import lombok.Getter;
 
 import java.io.*;
 import java.util.List;
 
-public class CsvToSqlUtil {
+public class CsvToSql {
 
-    private static CsvToSqlUtil instance;
+    @Getter
+    private final static CsvToSql instance = new CsvToSql();
 
-    private CsvToSqlUtil() {}
+    private CsvToSql() {}
 
-    public static CsvToSqlUtil getInstance() {
-        if (instance == null) {
-            instance = new CsvToSqlUtil();
-        }
-        return instance;
-    }
 
     public String readCsvToSql(String filename) throws IOException, CsvException {
         String tableName = filename.substring(0, filename.length() - 4);
 
-        InputStream inputStream = CsvToSqlUtil.class.getClassLoader().getResourceAsStream(filename);
+        InputStream inputStream = CsvToSql.class.getClassLoader().getResourceAsStream(filename);
 
         if (inputStream == null) {
             return null;

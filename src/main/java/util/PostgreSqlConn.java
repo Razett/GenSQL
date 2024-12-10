@@ -23,8 +23,10 @@ public class PostgreSqlConn {
     private static HikariConfig getConfig() {
         HikariConfig config = new HikariConfig();
         config.setDriverClassName("org.postgresql.Driver");
-        config.setJdbcUrl("jdbc:postgresql://localhost:5432/postgres?currentSchema=spacein");
-        config.setUsername("postgres");
+//        config.setJdbcUrl("jdbc:postgresql://localhost:5432/postgres?currentSchema=spacein");
+//        config.setUsername("postgres");
+        config.setJdbcUrl("jdbc:postgresql://localhost:5433/mngschool");
+        config.setUsername("spacein");
         config.setPassword("1234");
 
         return config;

@@ -33,7 +33,7 @@ public class MariaDbService {
         open(databaseName);
 
         DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyMMdd_HHmmss");
-        String tableName = "LMS_" + LocalDateTime.now().format(FORMATTER);
+        String tableName = databaseName.toUpperCase() + "_" + LocalDateTime.now().format(FORMATTER);
 
         Integer result = SQL_UTIL.executeUpdate(mariaDbConn, QUERY.createColumnTableQuery(tableName));
         SQL_UTIL.executeUpdate(mariaDbConn, QUERY.insertLogQuery(tableName));

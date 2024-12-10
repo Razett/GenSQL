@@ -22,6 +22,7 @@ public class MainApplication {
     private static final PostgreSqlService postgreSqlService = PostgreSqlService.getInstance();
     private static final MariaDbService mariaDbService = MariaDbService.getInstance();
     private static final String LMS = "lms";
+    private static final String MNGSCHOOL = "MNGSCHOOL";
 
     public static void main(String[] args) throws SQLException {
 
@@ -40,7 +41,7 @@ public class MainApplication {
 //        columnList.forEach(System.out::println);
 //        System.out.println(columnList.size());
 
-        mariaDbService.createTable(LMS);
-        mariaDbService.insertColumnInfo(LMS, postgreSqlService.getColumns());
+        mariaDbService.createTable(MNGSCHOOL);
+        mariaDbService.insertColumnInfo(MNGSCHOOL, postgreSqlService.getColumns());
     }
 }

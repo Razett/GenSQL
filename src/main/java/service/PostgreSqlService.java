@@ -27,7 +27,8 @@ public class PostgreSqlService  {
     public List<Column> getColumns() throws SQLException {
         open();
 
-        ResultSet resultSet = SQL_UTIL.executeQuery(postgreConn, QUERY.columnInfoQuery());
+//        ResultSet resultSet = SQL_UTIL.executeQuery(postgreConn, QUERY.columnInfoQuery());
+        ResultSet resultSet = SQL_UTIL.executeQuery(postgreConn, QUERY.mngColumnInfoQuery());
 
         List<Column> columnList = new ArrayList<>();
 

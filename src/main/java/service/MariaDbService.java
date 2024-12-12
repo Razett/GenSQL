@@ -5,8 +5,10 @@ import dto.Column;
 import dto.ColumnLog;
 import lombok.Getter;
 import util.MariaDbConn;
+import util.ObjectToCsv;
 import util.SqlUtil;
 
+import javax.management.Query;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -15,6 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MariaDbService {
@@ -23,6 +26,7 @@ public class MariaDbService {
     private static final MariaDbService instance = new MariaDbService();
 
     private static final SqlUtil SQL_UTIL = SqlUtil.getInstance();
+    private static final ObjectToCsv OBJECT_TO_CSV = ObjectToCsv.getInstance();
     private final MariaDbQuery QUERY = new MariaDbQuery();
 
     private static Connection mariaDbConn;
@@ -107,5 +111,32 @@ public class MariaDbService {
         } else {
             return false;
         }
+    }
+
+    public boolean getColumnList(String databaseName) throws SQLException {
+        ColumnLog columnLog = getColumnLog(databaseName);
+
+        open(databaseName);
+
+        List<Column> list = new ArrayList<>();
+        ResultSet resultSet = SQL_UTIL.executeQuery(mariaDbConn, QUERY.selectColumnQuery(columnLog.getTableName()));
+
+        while (resultSet.next()) {
+            Column column = new Column();
+            column.setTableName(resultSet.getString(1));
+            column.setColumnName(resultSet.getString(2));
+            column.setComment(resultSet.getString(3));
+            column.setType(resultSet.getString(4));
+            column.setLength(resultSet.getString(5));
+            column.setNullable(resultSet.getString(6));
+            column.setDefaultValue(resultSet.getString(7));
+            column.setPk(resultSet.getString(8));
+            column.setReferTable(resultSet.getString(9));
+            column.setReferColumn(resultSet.getString(10));
+            list.add(column);
+        }
+
+        return OBJECT_TO_CSV.convertToCsv(list);
+
     }
 }

@@ -43,5 +43,6 @@ public class MainApplication {
 
         mariaDbService.createTable(MNGSCHOOL);
         mariaDbService.insertColumnInfo(MNGSCHOOL, postgreSqlService.getColumns());
+        mariaDbService.getColumnList(MNGSCHOOL);
     }
 }

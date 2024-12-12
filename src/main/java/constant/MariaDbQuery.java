@@ -63,4 +63,8 @@ public final class MariaDbQuery {
     public String updateLogQuery(ColumnLog columnLog) {
         return "UPDATE log SET inserted = 1 where tablename = '" + columnLog.getTableName() + "'";
     }
+
+    public String selectColumnQuery(String tableName) {
+        return "SELECT * FROM `" + tableName + "`" + "order by `table_name` asc";
+    }
 }
